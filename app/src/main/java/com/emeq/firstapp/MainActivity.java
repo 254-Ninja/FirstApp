@@ -26,9 +26,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView textView = findViewById(R.id.text_value);
+                TextView textValue = findViewById(R.id.text_value);
+                String stringValue = textValue.getText().toString();
+                int originalValue = Integer.parseInt(stringValue);
+                int newValue = MyWorker.doubleTheValue(originalValue);
+                textValue.setText(Integer.toString(newValue));
 
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Changed value " + originalValue + " to " + newValue, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
